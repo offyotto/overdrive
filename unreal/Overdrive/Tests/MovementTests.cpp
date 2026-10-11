@@ -117,9 +117,13 @@ int main()
         R.Player().Distance=R.Circuit.Length-.01;R.Step(FixedStep,{1,0,0,false});Require(R.LapTimes.size()==1,"re-crossing start line cannot duplicate a lap");
     }
     {
-        Race Timed;Timed.Start(100);while(Timed.Countdown>.8)Timed.Step(FixedStep,{});
-        while(Timed.State==Phase::Countdown)Timed.Step(FixedStep,{1,0,0,false});Require(Timed.Player().Boost>1,"well-timed throttle earns launch turbo");
-        Race Held;Held.Start(100);while(Held.State==Phase::Countdown)Held.Step(FixedStep,{1,0,0,false});Require(Held.Player().Boost==0,"holding throttle from start does not farm launch reward");
+        Race Timed;Timed.Start(100);
+        while(Timed.Countdown>.8)Timed.Step(FixedStep,{});
+        while(Timed.State==Phase::Countdown)Timed.Step(FixedStep,{1,0,0,false});
+        Require(Timed.Player().Boost>1,"well-timed throttle earns launch turbo");
+        Race Held;Held.Start(100);
+        while(Held.State==Phase::Countdown)Held.Step(FixedStep,{1,0,0,false});
+        Require(Held.Player().Boost==0,"holding throttle from start does not farm launch reward");
     }
     {
         auto R=Ready();R.Player().Speed=20;R.Racers[1].FinishTime=-1;
@@ -180,7 +184,8 @@ int main()
             Camera.Step(I,Dt);const auto Position=Camera.Position();
             Require(std::isfinite(Position.Length()),"camera remains finite across hitches and corners");
             MaximumDistance=std::max(MaximumDistance,(Position-I.Focus).Length());
-            if(!First)MaximumDelta=std::max(MaximumDelta,(Position-Last).Length()/Dt);First=false;Last=Position;
+            if(!First)MaximumDelta=std::max(MaximumDelta,(Position-Last).Length()/Dt);
+            First=false;Last=Position;
         }
         Require(MaximumDistance<19,"camera keeps kart framed through corners and hitches");Require(MaximumDelta<90,"camera never teleports during normal racing");
         std::cout<<"Camera maximum separation "<<MaximumDistance<<"m; maximum travel rate "<<MaximumDelta<<"m/s\n";
