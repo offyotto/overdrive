@@ -1,0 +1,33 @@
+name: Game checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+
+  native-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure portable gameplay tests
+        run: cmake -S unreal/Overdrive/Tests -B build/native -DCMAKE_BUILD_TYPE=Debug
+      - name: Build
+        run: cmake --build build/native --parallel 2
+      - name: Test
+        run: ctest --test-dir build/native --output-on-failure

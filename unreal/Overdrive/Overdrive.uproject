@@ -1,0 +1,14 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.6",
+  "Category": "Games",
+  "Description": "OVERDRIVE — Cloudtop Coast. Native Unreal Engine kart racing with Enhanced Input controller support.",
+  "Modules": [
+    { "Name": "Overdrive", "Type": "Runtime", "LoadingPhase": "Default" },
+    { "Name": "OverdriveEditor", "Type": "Editor", "LoadingPhase": "Default" }
+  ],
+  "Plugins": [
+    { "Name": "EnhancedInput", "Enabled": true }
+  ],
+  "TargetPlatforms": ["Mac", "Windows", "Linux"]
+}

@@ -1,0 +1,33 @@
+OVERDRIVE
+
+Original project code, documentation, and authored/procedurally generated
+meshes, materials, and level assets are licensed under the MIT License in
+LICENSE. This license does not cover separately installed third-party tools,
+engine resources, or external font services.
+
+Unreal Engine 5.6
+https://www.unrealengine.com/en-US/eula/unreal
+Unreal Engine is a separately licensed prerequisite. This repository does not
+redistribute its engine code or binaries. References to /Engine resources are
+resolved by the user's own Unreal Engine installation and remain governed by
+Epic's applicable license.
+
+Browser build dependencies (installed through npm; not vendored)
+TypeScript: Apache-2.0
+Vite, Rollup, esbuild and most other build dependencies: MIT
+picocolors: ISC
+source-map-js: BSD-3-Clause
+See package-lock.json and each installed package's upstream license for the
+full license/copyright notices applicable to dependency redistribution.
+
+Externally loaded browser fonts (not bundled)
+Outfit: SIL Open Font License 1.1
+https://github.com/Outfitio/Outfit-Fonts
+Barlow Condensed: SIL Open Font License 1.1
+https://github.com/jpt/barlow
+The browser requests these through Google Fonts. No font files are included.
+
+Design and engineering references
+The movement design consulted published work by Richard M. Ryan, C. Scott
+Rigby and Andrew Przybylski, Maddy Makes Games, and Ryan Juckett. Links are in
+the Unreal README. These are references, not bundled third-party code.
